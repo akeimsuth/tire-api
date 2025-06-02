@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_service_area_service_areas",
+  "info": {
+    "displayName": "Service Area"
+  },
+  "options": {},
+  "attributes": {
+    "lat": {
+      "type": "decimal"
+    },
+    "lng": {
+      "type": "decimal"
+    },
+    "radius": {
+      "type": "decimal"
+    }
+  },
+  "config": {}
+}

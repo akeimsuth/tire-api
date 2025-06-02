@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_provider_providers",
+  "info": {
+    "displayName": "provider",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "businessName": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

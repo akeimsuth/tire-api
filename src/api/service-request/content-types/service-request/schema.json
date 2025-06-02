@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_requests",
+  "info": {
+    "singularName": "service-request",
+    "pluralName": "service-requests",
+    "displayName": "ServiceRequest"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tireSize": {
+      "type": "string"
+    },
+    "tireStatus": {
+      "type": "string"
+    },
+    "location": {
+      "type": "component",
+      "component": "location.location",
+      "repeatable": false
+    },
+    "notes": {
+      "type": "text"
+    },
+    "budget": {
+      "type": "decimal"
+    },
+    "urgency": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "string"
+    },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "bids": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bid.bid",
+      "mappedBy": "requestId"
+    },
+    "accepted_bid": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bid.bid"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::customer.customer",
+      "mappedBy": "service_request"
+    },
+    "rating": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::rating.rating",
+      "mappedBy": "request_id"
+    }
+  }
+}

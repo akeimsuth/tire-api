@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "providers",
+  "info": {
+    "singularName": "provider",
+    "pluralName": "providers",
+    "displayName": "Provider"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "businessName": {
+      "type": "string"
+    },
+    "serviceArea": {
+      "type": "component",
+      "component": "service-area.service-area",
+      "repeatable": false
+    },
+    "hourlyRate": {
+      "type": "decimal"
+    },
+    "vehicleSpecs": {
+      "type": "text"
+    },
+    "yearsExperience": {
+      "type": "integer"
+    },
+    "isApproved": {
+      "type": "boolean"
+    },
+    "totalJobs": {
+      "type": "integer"
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "walletBalance": {
+      "type": "decimal"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "business"
+    },
+    "bid": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bid.bid",
+      "mappedBy": "provider"
+    },
+    "service_types": {
+      "type": "json"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "provider_id"
+    }
+  }
+}

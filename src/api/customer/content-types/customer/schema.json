@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Customer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "paymentMethod": {
+      "type": "string"
+    },
+    "walletBalance": {
+      "type": "decimal"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "customer"
+    },
+    "service_request": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::service-request.service-request",
+      "inversedBy": "customer"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "customer_id"
+    }
+  }
+}

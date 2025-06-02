@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bids",
+  "info": {
+    "singularName": "bid",
+    "pluralName": "bids",
+    "displayName": "Bid"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "estimatedArrival": {
+      "type": "string"
+    },
+    "requestId": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-request.service-request",
+      "inversedBy": "bids"
+    },
+    "bidStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "accepted",
+        "rejected",
+        "expired"
+      ]
+    },
+    "provider": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::provider.provider",
+      "inversedBy": "bid"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}
