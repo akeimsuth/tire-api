@@ -60,6 +60,22 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "provider_id"
+    },
+    "stripe": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stripe.stripe",
+      "mappedBy": "providerId"
+    },
+    "service_requests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-request.service-request",
+      "mappedBy": "provider"
+    },
+    "online": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

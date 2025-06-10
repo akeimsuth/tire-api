@@ -40,6 +40,15 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "customer_id"
+    },
+    "stripeCustomerPaymentId": {
+      "type": "text"
+    },
+    "stripeCustomerId": {
+      "type": "text"
+    },
+    "saveCard": {
+      "type": "json"
     }
   }
 }

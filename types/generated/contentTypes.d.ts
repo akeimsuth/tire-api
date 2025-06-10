@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiApiKeyApiKey extends Struct.SingleTypeSchema {
+  collectionName: 'api_keys';
+  info: {
+    displayName: 'ApiKey';
+    pluralName: 'api-keys';
+    singularName: 'api-key';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::api-key.api-key'
+    > &
+      Schema.Attribute.Private;
+    mapboxKey: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    stripeSecretKey: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBidBid extends Struct.CollectionTypeSchema {
   collectionName: 'bids';
   info: {
@@ -433,10 +462,13 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
     phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     ratings: Schema.Attribute.Relation<'oneToMany', 'api::rating.rating'>;
+    saveCard: Schema.Attribute.JSON;
     service_request: Schema.Attribute.Relation<
       'oneToOne',
       'api::service-request.service-request'
     >;
+    stripeCustomerId: Schema.Attribute.Text;
+    stripeCustomerPaymentId: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -445,6 +477,36 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
       'plugin::users-permissions.user'
     >;
     walletBalance: Schema.Attribute.Decimal;
+  };
+}
+
+export interface ApiHomeHome extends Struct.SingleTypeSchema {
+  collectionName: 'homes';
+  info: {
+    displayName: 'Home';
+    pluralName: 'homes';
+    singularName: 'home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Cards: Schema.Attribute.Component<'repeaters.card', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroHeading1: Schema.Attribute.String;
+    heroHeading2: Schema.Attribute.String;
+    heroParagraph: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sectionOneHeading: Schema.Attribute.String;
+    sectionTwoHeading: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -472,11 +534,17 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
       'api::provider.provider'
     > &
       Schema.Attribute.Private;
+    online: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Decimal;
     ratings: Schema.Attribute.Relation<'oneToMany', 'api::rating.rating'>;
+    service_requests: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-request.service-request'
+    >;
     service_types: Schema.Attribute.JSON;
     serviceArea: Schema.Attribute.Component<'service-area.service-area', false>;
+    stripe: Schema.Attribute.Relation<'oneToOne', 'api::stripe.stripe'>;
     totalJobs: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -545,6 +613,7 @@ export interface ApiServiceRequestServiceRequest
   };
   attributes: {
     accepted_bid: Schema.Attribute.Relation<'oneToOne', 'api::bid.bid'>;
+    amount: Schema.Attribute.Decimal;
     bids: Schema.Attribute.Relation<'oneToMany', 'api::bid.bid'>;
     budget: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
@@ -560,6 +629,7 @@ export interface ApiServiceRequestServiceRequest
     location: Schema.Attribute.Component<'location.location', false>;
     notes: Schema.Attribute.Text;
     photos: Schema.Attribute.Media<'images', true>;
+    provider: Schema.Attribute.Relation<'manyToOne', 'api::provider.provider'>;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Relation<'oneToOne', 'api::rating.rating'>;
     serviceType: Schema.Attribute.String;
@@ -569,6 +639,44 @@ export interface ApiServiceRequestServiceRequest
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     urgency: Schema.Attribute.String;
+  };
+}
+
+export interface ApiStripeStripe extends Struct.CollectionTypeSchema {
+  collectionName: 'stripes';
+  info: {
+    displayName: 'Stripe';
+    pluralName: 'stripes';
+    singularName: 'stripe';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    accountAddress: Schema.Attribute.Text;
+    accountEmail: Schema.Attribute.String;
+    accountName: Schema.Attribute.String;
+    accountType: Schema.Attribute.String;
+    bankName: Schema.Attribute.String;
+    bankNumber: Schema.Attribute.String;
+    bankRouting: Schema.Attribute.String;
+    bankStatus: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::stripe.stripe'
+    > &
+      Schema.Attribute.Private;
+    providerId: Schema.Attribute.Relation<'oneToOne', 'api::provider.provider'>;
+    publishedAt: Schema.Attribute.DateTime;
+    stripeAccountId: Schema.Attribute.String;
+    stripeAccountStatus: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1085,11 +1193,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::api-key.api-key': ApiApiKeyApiKey;
       'api::bid.bid': ApiBidBid;
       'api::customer.customer': ApiCustomerCustomer;
+      'api::home.home': ApiHomeHome;
       'api::provider.provider': ApiProviderProvider;
       'api::rating.rating': ApiRatingRating;
       'api::service-request.service-request': ApiServiceRequestServiceRequest;
+      'api::stripe.stripe': ApiStripeStripe;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

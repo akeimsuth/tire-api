@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "Home"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroHeading1": {
+      "type": "string"
+    },
+    "heroHeading2": {
+      "type": "string"
+    },
+    "heroParagraph": {
+      "type": "text"
+    },
+    "sectionOneHeading": {
+      "type": "string"
+    },
+    "Cards": {
+      "type": "component",
+      "component": "repeaters.card",
+      "repeatable": true
+    },
+    "sectionTwoHeading": {
+      "type": "string"
+    }
+  }
+}

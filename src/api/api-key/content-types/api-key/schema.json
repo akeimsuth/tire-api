@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "api_keys",
+  "info": {
+    "singularName": "api-key",
+    "pluralName": "api-keys",
+    "displayName": "ApiKey"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mapboxKey": {
+      "type": "text"
+    },
+    "stripeSecretKey": {
+      "type": "text"
+    }
+  }
+}

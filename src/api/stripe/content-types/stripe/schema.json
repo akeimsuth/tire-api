@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stripes",
+  "info": {
+    "singularName": "stripe",
+    "pluralName": "stripes",
+    "displayName": "Stripe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "stripeAccountId": {
+      "type": "string"
+    },
+    "stripeAccountStatus": {
+      "type": "string"
+    },
+    "providerId": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::provider.provider",
+      "inversedBy": "stripe"
+    },
+    "bankName": {
+      "type": "string"
+    },
+    "bankNumber": {
+      "type": "string"
+    },
+    "bankRouting": {
+      "type": "string"
+    },
+    "bankStatus": {
+      "type": "string"
+    },
+    "accountType": {
+      "type": "string"
+    },
+    "accountName": {
+      "type": "string"
+    },
+    "accountAddress": {
+      "type": "text"
+    },
+    "accountEmail": {
+      "type": "string"
+    }
+  }
+}

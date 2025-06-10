@@ -25,6 +25,19 @@ export interface ProviderProvider extends Struct.ComponentSchema {
   };
 }
 
+export interface RepeatersCard extends Struct.ComponentSchema {
+  collectionName: 'components_repeaters_cards';
+  info: {
+    displayName: 'Card';
+  };
+  attributes: {
+    body: Schema.Attribute.Text;
+    icon: Schema.Attribute.RichText;
+    price: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ServiceAreaServiceArea extends Struct.ComponentSchema {
   collectionName: 'components_service_area_service_areas';
   info: {
@@ -42,6 +55,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'location.location': LocationLocation;
       'provider.provider': ProviderProvider;
+      'repeaters.card': RepeatersCard;
       'service-area.service-area': ServiceAreaServiceArea;
     }
   }

@@ -63,6 +63,15 @@
       "relation": "oneToOne",
       "target": "api::rating.rating",
       "mappedBy": "request_id"
+    },
+    "provider": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::provider.provider",
+      "inversedBy": "service_requests"
+    },
+    "amount": {
+      "type": "decimal"
     }
   }
 }
