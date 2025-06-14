@@ -29,11 +29,11 @@
       "target": "plugin::users-permissions.user",
       "mappedBy": "customer"
     },
-    "service_request": {
+    "service_requests": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::service-request.service-request",
-      "inversedBy": "customer"
+      "mappedBy": "customer"
     },
     "ratings": {
       "type": "relation",

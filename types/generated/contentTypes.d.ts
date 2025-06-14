@@ -463,8 +463,8 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     ratings: Schema.Attribute.Relation<'oneToMany', 'api::rating.rating'>;
     saveCard: Schema.Attribute.JSON;
-    service_request: Schema.Attribute.Relation<
-      'oneToOne',
+    service_requests: Schema.Attribute.Relation<
+      'oneToMany',
       'api::service-request.service-request'
     >;
     stripeCustomerId: Schema.Attribute.Text;
@@ -619,7 +619,7 @@ export interface ApiServiceRequestServiceRequest
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    customer: Schema.Attribute.Relation<'oneToOne', 'api::customer.customer'>;
+    customer: Schema.Attribute.Relation<'manyToOne', 'api::customer.customer'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
