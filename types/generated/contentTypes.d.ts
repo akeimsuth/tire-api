@@ -501,6 +501,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
     sectionOneHeading: Schema.Attribute.String;
     sectionTwoHeading: Schema.Attribute.String;

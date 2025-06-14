@@ -11,6 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "heroHeading1": {
       "type": "string"
     },
