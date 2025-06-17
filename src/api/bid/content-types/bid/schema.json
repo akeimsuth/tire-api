@@ -40,6 +40,11 @@
     },
     "notes": {
       "type": "text"
+    },
+    "location": {
+      "type": "component",
+      "component": "location.location",
+      "repeatable": false
     }
   }
 }

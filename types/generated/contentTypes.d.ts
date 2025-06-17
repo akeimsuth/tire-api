@@ -424,6 +424,7 @@ export interface ApiBidBid extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::bid.bid'> &
       Schema.Attribute.Private;
+    location: Schema.Attribute.Component<'location.location', false>;
     notes: Schema.Attribute.Text;
     provider: Schema.Attribute.Relation<'oneToOne', 'api::provider.provider'>;
     publishedAt: Schema.Attribute.DateTime;
