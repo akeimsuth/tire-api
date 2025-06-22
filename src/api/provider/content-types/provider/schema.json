@@ -14,6 +14,9 @@
     "businessName": {
       "type": "string"
     },
+    "phone": {
+      "type": "string"
+    },
     "serviceArea": {
       "type": "component",
       "component": "service-area.service-area",

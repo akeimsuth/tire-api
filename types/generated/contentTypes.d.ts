@@ -537,6 +537,7 @@ export interface ApiProviderProvider extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     online: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    phone: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Decimal;
     ratings: Schema.Attribute.Relation<'oneToMany', 'api::rating.rating'>;
