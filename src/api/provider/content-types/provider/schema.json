@@ -79,6 +79,20 @@
     "online": {
       "type": "boolean",
       "default": true
+    },
+    "businessId": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "businessLicense": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

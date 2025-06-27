@@ -44,6 +44,7 @@ export interface ServiceAreaServiceArea extends Struct.ComponentSchema {
     displayName: 'Service Area';
   };
   attributes: {
+    address: Schema.Attribute.Text;
     lat: Schema.Attribute.Decimal;
     lng: Schema.Attribute.Decimal;
     radius: Schema.Attribute.Decimal;

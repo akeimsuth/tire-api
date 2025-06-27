@@ -13,6 +13,9 @@
     },
     "radius": {
       "type": "decimal"
+    },
+    "address": {
+      "type": "text"
     }
   },
   "config": {}
